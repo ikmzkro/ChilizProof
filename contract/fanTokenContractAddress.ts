@@ -1,0 +1,1 @@
+export const fanTokenContractAddress = "0xd1484eCF258797a87E956f07E9463D88C691cd9A"

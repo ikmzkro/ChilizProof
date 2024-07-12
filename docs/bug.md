@@ -1,0 +1,9 @@
+- SBTがbeforeTokenTransferのrequire文を更新する対応では実現できなくなった
+  - ERC5192を利用する
+  - ERC721で妥協する
+- tokenOfOwnerByIndexでtokenIdを取得したかったがimport "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";でnftを発行した際にtokenIdが発番されない
+  - 失敗: https://sepolia.etherscan.io/address/0x1666718AaC4a616B1dAd002f7dcBbF0C533bcA5A#readContract
+  - 成功: https://sepolia.etherscan.io/address/0x0fd92fb94f827b0c7cdc4e673ecc1668457b447d#readContract
+  - tokenIdを取得する方法を別で考える
+  - 一旦は発行枚数が少ないのでコードでdigる
+- Chiliz Spicy Testnetでのデプロイが失敗する
