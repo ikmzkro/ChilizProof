@@ -87,4 +87,4 @@ For an introduction to our team, click [here](/docs/team.md).
 
 Email: ikmzkro@gmail.com
 
-Project Link: https://github.com/ikmzkro/Chiliz-Sports-Hackathon
+Project Link: https://github.com/ikmzkro/ChilizProof
