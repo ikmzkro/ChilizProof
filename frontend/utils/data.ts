@@ -4,10 +4,11 @@ export const makeWhiteList = async (voteInfo: Vote[]): Promise<DistributionResul
   const totalAmount = 1000;
 
   // https://www.jpnsport.go.jp/kokuritu/seat/tabid/58/Default.aspx
-  // 60%: E-119, 120
-  // 30%: E-117, 118, 121, 122
-  // 10%: E-116, 123
+  // +60%: E-119, 120
+  // +30%: E-117, 118, 121, 122
+  // +10%: E-116, 123
 
+  // Token distribution rates increase the closer you are to the cheering leader seats.
   const seatDistributionRates: Record<string, number> = {
     "E-119": 0.60,
     "E-120": 0.60,

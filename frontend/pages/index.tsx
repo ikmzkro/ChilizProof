@@ -239,7 +239,9 @@ export default function Home() {
         console.log(err);
       }
     } else {
-      alert("所持残高を超えるトークン及びゼロアドレス宛は指定できません");
+      alert(
+        "You cannot specify tokens exceeding the account balance or send them to the zero address."
+      );
     }
   };
 
@@ -254,16 +256,16 @@ export default function Home() {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (inputData.selectedSeat && inputData.selectedPlayer) {
-      // マークルルート、マークルプルーフを取得
+      // Obtain the Merkle root and Merkle proof
       const makeMerkleTreeRes = await makeMerkleTree(
         account,
         inputData.selectedSeat,
         inputData.selectedPlayer
       );
 
-      // 計算終了後、管理者はマークルルートをコントラクトに登録する必要がある
+      // After calculation, the administrator needs to register the Merkle root in the contract
       // Selected Seat: E-119, Selected Player: 10
-      console.log("remakeMerkleTreeRess", makeMerkleTreeRes);
+      console.log("makeMerkleTreeRes", makeMerkleTreeRes);
       alert("Your selection has been notified to the administrator.");
     } else {
       alert("Please select both a seat and a player.");
@@ -272,9 +274,8 @@ export default function Home() {
 
   useEffect(() => {
     checkMetaMaskInstalled();
-    // checkChainId();
-    // checkBalance();
-    // TODO: https://github.com/ikmzkro/Chiliz-Sports-Hackathon/issues/28
+    checkChainId();
+    checkBalance();
     checkNft();
   }, []);
 
@@ -295,7 +296,7 @@ export default function Home() {
             }
             onClick={connectWallet}
           >
-            MetaMaskを接続
+            Connect to MetaMask
           </button>
         ) : (
           <div>
