@@ -4,7 +4,7 @@ const fs = require("fs");
 const main = async () => {
   const addr1 = "0x427fE323F17BA719c3D5794c2a84240E7Cc9A7f1";
   const tokenURI1 =
-    "https://lime-giant-dove-621.mypinata.cloud/ipfs/QmWKMvNeyJJLjMLfPozg5aAQXAXLJFJFdnemfkg1DtiB5M";
+    "https://lime-giant-dove-621.mypinata.cloud/ipfs/QmfWkAv5hgH1gJvsEr458EWxsSZBz1g1vRgHHUL7WpC9n5";
   const MyNft = await ethers.getContractFactory("MyNFT");
   const myNft = await MyNft.deploy();
 

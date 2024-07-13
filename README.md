@@ -1,7 +1,7 @@
 # 🌶 ChilizProof 🌶
 
 <div align="center">
-  <img src="./asset/supporter.png" alt="🌶ChilizProof🌶 Image" width="50%">
+  <img src="./asset/ChilizProof.png" alt="🌶ChilizProof🌶 Image" width="50%">
 </div>
 
 ## 🌶 Introduction 🌶
@@ -96,27 +96,24 @@ cd frontend && yarn && yarn dev
 
 ## 🌶 Demo 🌶
 
+
+
 ## Deployed Contract Address
 
 ### Chiliz Spicy Testnet
 
-| Contract Name        | Address                                    |
-| -------------------- | ------------------------------------------ |
-| Forwarder            |  |
-| MintNFT              |  |
-| EventManager         |  |
-| SecretphraseVerifier |  |
-| OperationController  |  |
+| Contract Name          | Address                                    |
+| ---------------------- | ------------------------------------------ |
+| NFTContract            |  |
+| CreateFanTokenContract |  |
+| SendFanTokenContract   |  |
 
 ### Sepolia Testnet
-| Contract Name        | Address                                    |
-| -------------------- | ------------------------------------------ |
-| Forwarder            |  |
-| MintNFT              |  |
-| EventManager         |  |
-| SecretphraseVerifier |  |
-| OperationController  |  |
-
+| Contract Name          | Address                                    |
+| ---------------------- | ------------------------------------------ |
+| NFTContract            | 0x0FD92fb94f827B0C7CdC4e673ECC1668457B447d |
+| CreateFanTokenContract | 0xfc5B5058b2D159a01dc400891C67B40C27Ede1D3 |
+| SendFanTokenContract   | 0x746C1D78e0F428867325bEF9A5f9a46Ab7750A67 |
 
 ## 🌶 License 🌶
 This project is licensed under the MIT License.

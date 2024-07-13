@@ -41,12 +41,14 @@ export default function Home() {
   players.sort((a, b) => a.number - b.number);
 
   const initializeMoralis = async () => {
+    console.log("moralisInitialized", moralisInitialized);
+
     if (!moralisInitialized) {
       try {
+        moralisInitialized = true;
         await Moralis.start({
           apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
         });
-        moralisInitialized = true;
       } catch (error) {
         console.error("Moralis initialization error:", error);
       }
@@ -137,28 +139,19 @@ export default function Home() {
     );
 
     // loginUserAddress: Test address for checking NFTs on the frontend.
-    const ownerAddress = "0x67db0893771ed1ce95327bc6aa84fa202bcc0b18";
-    let balance;
+    const ownerAddress = "0x0486b1770B1cCe0f4E84E95274b9D46a9dE68c26";
 
-    try {
-      // Retrieve the balance of NFTs owned by ownerAddress
-      balance = await nftContract.balanceOf(ownerAddress);
-
-      // If balance is zero, alert a message
-      if (!balance) {
-        alert("test");
-      }
-    } catch (error) {
-      // Log the balance when an error occurs
-      console.log("balance", balance);
-    }
-
+    // To retrieve the Token IDs of NFTs owned by ownerAddress
     // tokenOfOwnerByIndex
     // const tokenId = await nftContract.tokenOfOwnerByIndex(addr, i);
     const response = await Moralis.EvmApi.nft.getWalletNFTs({
       chain: sepoliaChainId,
       address: ownerAddress,
     });
+    const nfts = response.raw.result;
+    const numberOfNFTs = response.raw.result.length;
+    console.log("response.raw.result", response.raw.result);
+
     const filteredNFTs = response.result.filter(
       (nft) =>
         nft.tokenAddress._value.toLowerCase() ===
@@ -168,27 +161,22 @@ export default function Home() {
       .map((nft) => nft.tokenId)
       .sort((a, b) => a - b);
 
-    if (balance?.toNumber() > 0) {
+    if (numberOfNFTs > 0) {
       setNftOwner(true);
 
-      for (let i = 0; i < balance.toNumber(); i++) {
-        let tokenURI = await nftContract.tokenURI(tokenIds[i]);
-        tokenURI = tokenURI.replace("ipfs://", "https://ipfs.io/ipfs/");
-
+      for (let i = 0; i < numberOfNFTs; i++) {
         try {
-          const meta = await axios.get(tokenURI);
+          const meta = await axios.get(nfts[i].token_uri as any);
           const name = meta.data.name;
           const description = meta.data.description;
-          const imageURI = meta.data.image.replace(
-            "ipfs://",
-            "https://ipfs.io/ipfs/"
-          );
+          const imageURI = meta.data.image;
+          console.log("imageURI", imageURI);
 
           const item = {
             tokenId: tokenIds[i],
             name,
             description,
-            tokenURI,
+            tokenURI: nfts[i].token_uri,
             imageURI,
           };
 
@@ -293,9 +281,7 @@ export default function Home() {
         "flex flex-col items-center bg-slate-100 text-blue-900 min-h-screen"
       }
     >
-      <h2 className={"text-6xl font-bold my-12 mt-8"}>
-        Contribute to ChilizFanToken
-      </h2>
+      <h2 className={"text-6xl font-bold my-12 mt-8"}>ChilizProof</h2>
       <div className={"flex mt-1"}>
         {account === "" ? (
           <button
