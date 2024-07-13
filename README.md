@@ -96,9 +96,39 @@ cd frontend && yarn && yarn dev
 
 ## 🌶 Demo 🌶
 
+1. ユーザがトップ画面にアクセスし、MetaMaskでログインします。
+
+<div align="center">
+  <img src="./asset/flow1.png" alt="🌶ChilizProof🌶 Image" width="100%">
+</div>
+
+2. ログイン後の画面を確認します。
+
+<div align="center">
+  <img src="./asset/flow2.png" alt="🌶ChilizProof🌶 Image" width="100%">
+</div>
+
+3. ユーザは座席とMOM投票を選択肢Submitボタンをクリックし、管理者に伝えます。
+
+<div align="center">
+  <img src="./asset/flow3.png" alt="🌶ChilizProof🌶 Image" width="100%">
+</div>
+<div align="center">
+  <img src="./asset/flow4.png" alt="🌶ChilizProof🌶 Image" width="100%">
+</div>
+
+4. 管理者はファントークンとNFTを配布します。
+
+5. ユーザはMetaMaskでファントークンの残高を確認します。
+
+6. ユーザはログイン後の画面で受け取ったNFTを確認します。
+
+<div align="center">
+  <img src="./asset/flow6.png" alt="🌶ChilizProof🌶 Image" width="100%">
+</div>
 
 
-## Deployed Contract Address
+<!-- ## Deployed Contract Address
 
 ### Chiliz Spicy Testnet
 
@@ -113,7 +143,7 @@ cd frontend && yarn && yarn dev
 | ---------------------- | ------------------------------------------ |
 | NFTContract            | 0x0FD92fb94f827B0C7CdC4e673ECC1668457B447d |
 | CreateFanTokenContract | 0xfc5B5058b2D159a01dc400891C67B40C27Ede1D3 |
-| SendFanTokenContract   | 0x746C1D78e0F428867325bEF9A5f9a46Ab7750A67 |
+| SendFanTokenContract   | 0x746C1D78e0F428867325bEF9A5f9a46Ab7750A67 | -->
 
 ## 🌶 License 🌶
 This project is licensed under the MIT License.

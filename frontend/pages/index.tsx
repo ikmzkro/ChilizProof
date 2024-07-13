@@ -299,9 +299,9 @@ export default function Home() {
               <span className="flex flex-col items-left font-semibold">
                 WalletAddress: {account}
               </span>
-              <span className="flex flex-col items-left font-semibold">
+              {/* <span className="flex flex-col items-left font-semibold">
                 ChilizFanTokenBalance: {tokenBalance}
-              </span>
+              </span> */}
             </div>
             <p className="px-2 py-2 mt-8">Vote to receive FanToken</p>
             <div>
