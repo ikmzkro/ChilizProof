@@ -2,7 +2,7 @@
 
 ### Koichiro Ikemizu
 
-![Koichiro Ikemizu](ikmzkro-1024×1024.jpg)
+<!-- ![Koichiro Ikemizu](ikmzkro-1024×1024.jpg) -->
 
 **Bio:**
 He entered the Web3 industry in 2022 and has been involved in developing NFT marketplaces, CeDiFi-based Web3 wallets, and iOS/Android apps providing RWA, as well as blockchain system development and consulting.
@@ -11,7 +11,7 @@ As a Vissel Kobe supporter in the J.League, he participated in this hackathon to
 
 ### Yatagarasu
 
-![Yatagarasu](GRxq4r_bEAA9PWx.jpg)
+<!-- ![Yatagarasu](GRxq4r_bEAA9PWx.jpg) -->
 
 **Bio:**
 He primarily shares the latest information on fan tokens, especially Chiliz, and has been recognized for his contributions to the $KAYEN community, serving as a moderator on the KAYEN Discord. In this hackathon, he provided advice on the overall concept.
