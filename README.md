@@ -30,60 +30,60 @@ This project aims to address challenges faced by Chiliz, such as fan engagement,
 
 ### Component Relationships
 
-- The Admin deploys the CreateFanTokenContract, SendFanTokenContract, and NftContract.
-- When a User scans the QR code assigned to their seat and performs a MOM vote, their address, seat block, and voted player are registered in the system, triggering the CalculateContributionRateMethod.
-- Using the address and distribution ratios calculated by CalculateContributionRateMethod, a Merkle tree is constructed using the CreateMerkleTreeMethod.
-- A Merkle tree is also constructed using the CreateMerkleTreeMethod for an array composed of addresses and distribution quantities.
-- The Merkle tree and Merkle proof obtained from CreateMerkleTreeMethod are provided to the Admin.
-- After the match ends, the Admin registers the Merkle root with SendFanTokenContract and NftContract.
-- The Admin distributes tokens using SendFanTokenContract.
-- The Admin distributes NFTs using NftContract.
+- The Admin deploys the `CreateFanTokenContract`, `SendFanTokenContract`, and `NftContract`.
+- When a User scans the QR code assigned to their seat and performs a MOM vote, their address, seat block, and voted player are registered in the system, triggering the `CalculateContributionRateMethod`.
+- Using the address and distribution ratios calculated by `CalculateContributionRateMethod`, a Merkle tree is constructed using the `CreateMerkleTreeMethod`.
+- A Merkle tree is also constructed using the `CreateMerkleTreeMethod` for an array composed of addresses and distribution quantities.
+- The Merkle tree and Merkle proof obtained from `CreateMerkleTreeMethod` are provided to the Admin.
+- After the match ends, the Admin registers the Merkle root with `SendFanTokenContract` and `NftContract`.
+- The Admin distributes tokens using `SendFanTokenContract`.
+- The Admin distributes NFTs using `NftContract`.
 
 ## 🌶 Features 🌶
 
 ### QR Code scanning functionality
 
-The QR code scanning functionality verifies that spectators have indeed attended the stadium by designing a flow to scan QR codes attached to stadium seats and execute subsequent processes.
+The `QR code scanning functionality` verifies that spectators have indeed attended the stadium by designing a flow to scan QR codes attached to stadium seats and execute subsequent processes.
 
 ### CalculateContributionRateMethod
 
-The CalculateContributionRateMethod is designed to increase the distribution rate of fan tokens based on two factors: proximity of the fan's seat to the cheering leader's seat and the success of MOM voting results. This allows for distributing rewards commensurate with supporters' levels of contribution.
+The `CalculateContributionRateMethod` is designed to increase the distribution rate of fan tokens based on two factors: proximity of the fan's seat to the cheering leader's seat and the success of MOM voting results. This allows for distributing rewards commensurate with supporters' levels of contribution.
 
 ### CreateMerkleTreeMethod
 
-The CreateMerkleTreeMethod builds two types of Merkle trees and makes the resulting Merkle root and Merkle proof available to the operating entity's administrators:
+The `CreateMerkleTreeMethod` builds two types of Merkle trees and makes the resulting Merkle root and Merkle proof available to the operating entity's administrators:
 
-1. It calculates the distribution amount of fan tokens for each address using the CalculateContributionRateMethod, converts them into an array, and constructs a Merkle tree.
+1. It calculates the distribution amount of fan tokens for each address using the `CalculateContributionRateMethod`, converts them into an array, and constructs a Merkle tree.
 2. It sets the issuance quantity of 1 NFT for each address, converts them into an array, and constructs a Merkle tree.
 
 These processes enable administrators to manage and utilize the Merkle root and Merkle proof accordingly.
 
 ### CreateFanTokenContract
 
-The CreateFanTokenContract can issue fan tokens for any club on the Chiliz Chain.
+The `CreateFanTokenContract` can issue fan tokens for any club on the Chiliz Chain.
 
 ### SendFanTokenContract
 
-The SendFanTokenContract can be executed following these steps:
+The `SendFanTokenContract` can be executed following these steps:
 
-1. Utilize the fan tokens issued by CreateFanTokenContract.
-2. Register the Merkle root calculated by CreateMerkleTreeMethod with the contract.
+1. Utilize the fan tokens issued by `CreateFanTokenContract`.
+2. Register the Merkle root calculated by `CreateMerkleTreeMethod` with the contract.
 3. Call the fan token transfer function with the Merkle proof as an argument, enabling the transfer of fan tokens to appropriate addresses based on their allocated amounts.
 
 ### NftContract
 
-The NftContract can be executed following these steps:
+The `NftContract` can be executed following these steps:
 
-1. Register the Merkle root calculated by CreateMerkleTreeMethod with the contract.
+1. Register the Merkle root calculated by `CreateMerkleTreeMethod` with the contract.
 2. Call the NFT issuance function with the Merkle proof as an argument, enabling the distribution of NFTs to appropriate addresses based on their allocated quantities.
 
 ## 🌶 Features Developed During the Hackathon 🌶
 
-In this hackathon, we developed a prototype of the Features and created a flow scenario demonstrating the interaction of CalculateContributionRateMethod, CreateMerkleTreeMethod, CreateFanTokenContract, SendFanTokenContract, and NftContract.
+In this hackathon, we developed a prototype of the Features and created a flow scenario demonstrating the interaction of `CalculateContributionRateMethod`, `CreateMerkleTreeMethod`, `CreateFanTokenContract`, `SendFanTokenContract`, and `NftContract`.
 
 The flow involves:
-- **User** executing CalculateContributionRateMethod and CreateMerkleTreeMethod.
-- **Admin** executing CreateFanTokenContract, SendFanTokenContract, and NftContract.
+- **User** executing `CalculateContributionRateMethod` and `CreateMerkleTreeMethod`.
+- **Admin** executing `CreateFanTokenContract`, `SendFanTokenContract`, and `NftContract`.
 
 Users log in to the site using MetaMask and can verify the distribution results of fan tokens and NFTs.
 
