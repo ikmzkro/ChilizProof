@@ -24,25 +24,39 @@
 
 ## 🌶 Features 🌶
 
+### QR Code scanning functionality
+
+QR Code scanning functionalityは、スタジアムの応援席に添付されたQRコードを読み取り、後続処理を行うフローを設計することで、観客が確かにスタジアムに来場したことを証明できるようにします。
+
 ### CalculateContributionRateMethod
 
-CalculateContributionRateMethodは、ファンの座席が応援リーダーの座席に近いほど、MOM投票結果が正解であるほど、ファントークンの分配率を高めるような設計を行うことで、サポータの貢献量に応じた報酬を分配することができます。
+CalculateContributionRateMethodは、ファンの座席が応援リーダーの座席に近いほど、またMOM投票結果が当選しているほど、ファントークンの分配率を高めるように設計されています。これにより、サポーターの貢献度に応じた報酬を分配することが可能になります。
 
-### WhitelistContract
+### CreateMerkleTreeMethod
 
-WhitelistContractは、CalculateContributionRateMethodによって導出されたアドレスと分配率の対応を配列に格納後、マークルツリーを計算します。計算結果のマークルルートはオンチェーン上で管理された状態ます。
+CreateMerkleTreeMethodは、2種類のマークルツリーを構築し、求められたマークルルートとマークルプルーフを運用母体の管理者が利用できるようにします。
 
-### NftContract
-
-NftContractは、スタジアムに観戦しにきたファンに対して試合への貢献証明としてNFTを発行します。
-
-### SendFanTokenContract
-
-SendFanTokenContractは、スタジアムに観戦しにきたファンに対してCalculateContributionRateから導出されたファントークンを試合への貢献報酬として発行します。ホワイトリストによって管理されたアドレスと分配率を用いてトークンを安全に発行できるように制御します。
+1. 各アドレスに対するファントークン分配量をCalculateContributionRateMethodで計算し、それを配列化した後、マークルツリーを構築します。
+2. 各アドレスに対するNFT発行枚数を1と設定し、それを配列化した後、マークルツリーを構築します。
 
 ### CreateFanTokenContract
 
-CreateFanTokenContractは、Chiliz Chain上で任意クラブのファントークンを発行することができます。
+CreateFanTokenContractは、Chiliz Chain上で任意のクラブのファントークンを発行することができます。
+
+### SendFanTokenContract
+
+SendFanTokenContractは、下記手順で実行できます。
+
+1. CreateFanTokenContractで発行されたファントークンを使用します。
+2. CreateMerkleTreeMethodで計算されたマークルルートをコントラクトに登録します。
+3. マークルプルーフを引数にしてファントークン送金関数を呼び出し、適切なアドレスと分配量に応じてファントークンを送金できます。
+
+### NftContract
+
+NftContractは、下記手順で実行できます。
+
+1. CreateMerkleTreeMethodで計算されたマークルルートをコントラクトに登録します。
+2. マークルプルーフを引数にしてNFT発行関数を呼び出し、適切なアドレスと分配枚数に応じてNFTを配布できます。
 
 ## 🌶 Features Developed During the Hackathon 🌶
 
@@ -63,9 +77,26 @@ cd frontend && yarn && yarn dev
 
 ## 🌶 Architecture 🌶
 
+### 
 <div align="center">
-  <img src="./asset/architecture3.png" alt="🌶ChilizProof🌶 Image" width="50%">
+  <img src="./asset/architecture3.png" alt="🌶ChilizProof🌶 Image" width="100%">
 </div>
+
+- 管理者はファントークン発行コントラクトをデプロイします。
+- 管理者はNFT発行コントラクトをデプロイします。
+- ユーザーはアプリを使って座席のQRコードを読み取ります。
+- ユーザーがMOM投票を行うと、アドレス、座席ブロック、投票選手がシステムに登録されます。
+- 試合終了後、システムは以下の指標に基づいてアドレスに対する分配比率を計算します。
+    - 座席ブロックが応援リーダーに近いほど、ファントークンの分配比率を高くします。
+    - MOM投票が当選した場合、ファントークンの分配比率を2倍にします。
+- アドレスと分配比率で構成された配列に対して、マークルツリー1を構築します。
+- アドレスと配布個数で構成された配列に対して、マークルツリー2を構築します。
+- 求められたマークルツリーとマークルプルーフがシステムに登録されます。
+- 管理者は試合終了後、マークルルートをオンチェーンに登録します。
+- 管理者はファントークン発行コントラクトを実行し、トークンを配布します。
+- 管理者はNFT発行コントラクトを実行し、NFTを配布します。
+
+
 
 ### Component Relationships
 
