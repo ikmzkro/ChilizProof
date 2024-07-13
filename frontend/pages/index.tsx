@@ -38,25 +38,20 @@ export default function Home() {
     "0xe81671f425fd1d84127255270642CCD36E86EE7C";
   const zeroAddress = "0x0000000000000000000000000000000000000000";
 
-  // 背番号で昇順ソート
   players.sort((a, b) => a.number - b.number);
 
-  useEffect(() => {
-    const initializeMoralis = async () => {
-      if (!moralisInitialized) {
-        try {
-          await Moralis.start({
-            apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
-          });
-          moralisInitialized = true;
-        } catch (error) {
-          console.error("Moralis initialization error:", error);
-        }
+  const initializeMoralis = async () => {
+    if (!moralisInitialized) {
+      try {
+        await Moralis.start({
+          apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+        });
+        moralisInitialized = true;
+      } catch (error) {
+        console.error("Moralis initialization error:", error);
       }
-    };
-
-    initializeMoralis();
-  }, []);
+    }
+  };
 
   const checkMetaMaskInstalled = async () => {
     const { ethereum } = window;
@@ -109,7 +104,6 @@ export default function Home() {
 
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
-      console.log("signer", signer);
 
       // CHZの残高取得
       ethereum.on("accountsChanged", checkAccountChanged);
@@ -142,9 +136,22 @@ export default function Home() {
       signer
     );
 
+    // loginUserAddress: Test address for checking NFTs on the frontend.
     const ownerAddress = "0x67db0893771ed1ce95327bc6aa84fa202bcc0b18";
+    let balance;
 
-    const balance = await nftContract.balanceOf(ownerAddress);
+    try {
+      // Retrieve the balance of NFTs owned by ownerAddress
+      balance = await nftContract.balanceOf(ownerAddress);
+
+      // If balance is zero, alert a message
+      if (!balance) {
+        alert("test");
+      }
+    } catch (error) {
+      // Log the balance when an error occurs
+      console.log("balance", balance);
+    }
 
     // tokenOfOwnerByIndex
     // const tokenId = await nftContract.tokenOfOwnerByIndex(addr, i);
@@ -161,7 +168,7 @@ export default function Home() {
       .map((nft) => nft.tokenId)
       .sort((a, b) => a - b);
 
-    if (balance.toNumber() > 0) {
+    if (balance?.toNumber() > 0) {
       setNftOwner(true);
 
       for (let i = 0; i < balance.toNumber(); i++) {
@@ -273,9 +280,10 @@ export default function Home() {
   };
 
   useEffect(() => {
+    initializeMoralis();
     checkMetaMaskInstalled();
-    checkChainId();
-    checkBalance();
+    // checkChainId();
+    // checkBalance();
     checkNft();
   }, []);
 
@@ -313,7 +321,7 @@ export default function Home() {
             <div>
               <form className="flex pl-1 py-1 mb-1 bg-white border border-gray-400">
                 <select
-                  className="w-4/12 ml-2 text-right border border-gray-400"
+                  className="w-5/12 ml-2 text-right border border-gray-400"
                   name="selectedSeat"
                   onChange={handleSeatChange}
                   value={inputData.selectedSeat}
