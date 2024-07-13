@@ -96,19 +96,19 @@ cd frontend && yarn && yarn dev
 
 ## 🌶 Demo 🌶
 
-1. ユーザがトップ画面にアクセスし、MetaMaskでログインします。
+1. The user accesses the main screen and logs in with MetaMask.
 
 <div align="center">
   <img src="./asset/flow1.png" alt="🌶ChilizProof🌶 Image" width="100%">
 </div>
 
-2. ログイン後の画面を確認します。
+2. The user checks the screen after logging in.
 
 <div align="center">
   <img src="./asset/flow2.png" alt="🌶ChilizProof🌶 Image" width="100%">
 </div>
 
-3. ユーザは座席とMOM投票を選択肢Submitボタンをクリックし、管理者に伝えます。
+3. The user selects a seat and MOM vote, clicks the Submit button, and informs the administrator.
 
 <div align="center">
   <img src="./asset/flow3.png" alt="🌶ChilizProof🌶 Image" width="100%">
@@ -117,11 +117,11 @@ cd frontend && yarn && yarn dev
   <img src="./asset/flow4.png" alt="🌶ChilizProof🌶 Image" width="100%">
 </div>
 
-4. 管理者はファントークンとNFTを配布します。
+4. The administrator distributes fan tokens and NFTs.
 
-5. ユーザはMetaMaskでファントークンの残高を確認します。
+5. The user checks the balance of fan tokens in MetaMask.
 
-6. ユーザはログイン後の画面で受け取ったNFTを確認します。
+6. The user checks the received NFTs on the screen after logging in.
 
 <div align="center">
   <img src="./asset/flow6.png" alt="🌶ChilizProof🌶 Image" width="100%">
@@ -148,15 +148,12 @@ cd frontend && yarn && yarn dev
 ### Deploy Command
 ```
 npx hardhat run scripts/deployMyNFT.ts --network chiliz
-
 https://testnet.chiliscan.com/token/0xA65DbdB04BBF78859AD7F17188D8f3663592b62B
 
 npx hardhat run scripts/deployFanToken.ts --network chiliz
-
 https://testnet.chiliscan.com/token/0xc0f9c4C6c0F426E145d2ba3D3Ef7218950813610
 
 npx hardhat run scripts/deploySendChilizFanToken.ts --network chiliz
-
 https://testnet.chiliscan.com/address/0x19D72055277B0C97d26008E4c922354998eF92dB
 ```
 
