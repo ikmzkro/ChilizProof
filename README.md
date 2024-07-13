@@ -28,6 +28,17 @@
   <img src="./asset/architecture3.png" alt="🌶ChilizProof🌶 Image" width="100%">
 </div>
 
+### Component Relationships
+
+- AdminはCreateFanTokenContract、SendFanTokenContract、NftContractをデプロイします。
+- Userが座席に設定されたQRコード読み取りMOM投票を行うと、アドレス、座席ブロック、投票選手がシステムに登録され、CalculateContributionRateMethodをコールします。
+- アドレスとCalculateContributionRateMethodで求まった分配比率で構成された配列に対して、CreateMerkleTreeMethodを用いてマークルツリーを構築します。
+- アドレスと配布個数で構成された配列に対して、CreateMerkleTreeMethodを用いてマークルツリーを構築します。
+- CreateMerkleTreeMethodで求められたマークルツリーとマークルプルーフがAdminに連携されます。
+- Adminは試合終了後、マークルルートをSendFanTokenContract、NftContractに登録します。
+- AdminはSendFanTokenContractでトークンを配布します。
+- AdminはNftContractでNFTを配布します。
+
 ## 🌶 Features 🌶
 
 ### QR Code scanning functionality
@@ -63,21 +74,6 @@ NftContractは、下記手順で実行できます。
 
 1. CreateMerkleTreeMethodで計算されたマークルルートをコントラクトに登録します。
 2. マークルプルーフを引数にしてNFT発行関数を呼び出し、適切なアドレスと分配枚数に応じてNFTを配布できます。
-
-### Features Component Relationships
-
-- 管理者はCreateFanTokenContract、SendFanTokenContract、NftContractをデプロイします。
-- ユーザーはアプリを使って座席のQRコードを読み取ります。
-- ユーザーがMOM投票を行うと、アドレス、座席ブロック、投票選手がシステムに登録されます。
-- 試合終了後、システムは以下の指標に基づいてアドレスに対する分配比率を計算します。
-    - 座席ブロックが応援リーダーに近いほど、ファントークンの分配比率を高くします。
-    - MOM投票が当選した場合、ファントークンの分配比率を2倍にします。
-- アドレスと分配比率で構成された配列に対して、マークルツリーを構築します。
-- アドレスと配布個数で構成された配列に対して、マークルツリーを構築します。
-- 求められたマークルツリーとマークルプルーフがシステムに登録されます。
-- 管理者は試合終了後、マークルルートをオンチェーンに登録します。
-- 管理者はファントークン発行コントラクトを実行し、トークンを配布します。
-- 管理者はNFT発行コントラクトを実行し、NFTを配布します。
 
 ## 🌶 Architecture Developed During the Hackathon 🌶
 
