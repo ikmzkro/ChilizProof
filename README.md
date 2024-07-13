@@ -128,22 +128,37 @@ cd frontend && yarn && yarn dev
 </div>
 
 
-<!-- ## Deployed Contract Address
+## Deployed Contract Address
 
 ### Chiliz Spicy Testnet
 
 | Contract Name          | Address                                    |
 | ---------------------- | ------------------------------------------ |
-| NFTContract            |  |
-| CreateFanTokenContract |  |
-| SendFanTokenContract   |  |
+| NFTContract            | 0xA65DbdB04BBF78859AD7F17188D8f3663592b62B |
+| CreateFanTokenContract | 0xc0f9c4C6c0F426E145d2ba3D3Ef7218950813610 |
+| SendFanTokenContract   | 0x19D72055277B0C97d26008E4c922354998eF92dB |
 
 ### Sepolia Testnet
 | Contract Name          | Address                                    |
 | ---------------------- | ------------------------------------------ |
 | NFTContract            | 0x0FD92fb94f827B0C7CdC4e673ECC1668457B447d |
 | CreateFanTokenContract | 0xfc5B5058b2D159a01dc400891C67B40C27Ede1D3 |
-| SendFanTokenContract   | 0x746C1D78e0F428867325bEF9A5f9a46Ab7750A67 | -->
+| SendFanTokenContract   | 0x746C1D78e0F428867325bEF9A5f9a46Ab7750A67 |
+
+### Deploy Command
+```
+npx hardhat run scripts/deployMyNFT.ts --network chiliz
+
+https://testnet.chiliscan.com/token/0xA65DbdB04BBF78859AD7F17188D8f3663592b62B
+
+npx hardhat run scripts/deployFanToken.ts --network chiliz
+
+https://testnet.chiliscan.com/token/0xc0f9c4C6c0F426E145d2ba3D3Ef7218950813610
+
+npx hardhat run scripts/deploySendChilizFanToken.ts --network chiliz
+
+https://testnet.chiliscan.com/address/0x19D72055277B0C97d26008E4c922354998eF92dB
+```
 
 ## 🌶 License 🌶
 This project is licensed under the MIT License.

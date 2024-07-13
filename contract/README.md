@@ -105,3 +105,17 @@ https://sepolia.etherscan.io/address/0x2c9039a11d9Fd11A7bD5da1382eF709B03DA6887#
 ---
 
 npx hardhat verify 0xd1484eCF258797a87E956f07E9463D88C691cd9A --network chiliz
+
+---
+
+npx hardhat run scripts/deployMyNFT.ts --network chiliz
+
+https://testnet.chiliscan.com/token/0xA65DbdB04BBF78859AD7F17188D8f3663592b62B
+
+npx hardhat run scripts/deployFanToken.ts --network chiliz
+
+https://testnet.chiliscan.com/token/0xc0f9c4C6c0F426E145d2ba3D3Ef7218950813610
+
+npx hardhat run scripts/deploySendChilizFanToken.ts --network chiliz
+
+https://testnet.chiliscan.com/address/0x19D72055277B0C97d26008E4c922354998eF92dB

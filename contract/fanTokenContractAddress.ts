@@ -1,1 +1,1 @@
-export const fanTokenContractAddress = "0xd1484eCF258797a87E956f07E9463D88C691cd9A"
+export const fanTokenContractAddress = "0xc0f9c4C6c0F426E145d2ba3D3Ef7218950813610"

@@ -11,13 +11,13 @@ const main = async () => {
   const sendChilizFanToken = await SendChilizFanToken.deploy();
   console.log(`Contract deployed to: https://sepolia.etherscan.io/address/${sendChilizFanToken.target}`);
 
-  // Interact with the contract
-  let tx = await sendChilizFanToken.sendChilizFanToken(token, [[to, amount]]);
-  console.log("Transaction hash:", tx.hash);
+  // // Interact with the contract
+  // let tx = await sendChilizFanToken.sendChilizFanToken(token, [[to, amount]]);
+  // console.log("Transaction hash:", tx.hash);
 
-  // Wait for transaction to be mined
-  await tx.wait();
-  console.log("Tokens transferred successfully!"); 
+  // // Wait for transaction to be mined
+  // await tx.wait();
+  // console.log("Tokens transferred successfully!"); 
 }
 
 main().catch((error) => {
