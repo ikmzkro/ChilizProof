@@ -22,6 +22,12 @@
 
     - NFTゲームでは、ファントークンをクラブ選手のNFTに交換することでスカッドを組み、Chiliz Chain上でファントークンを発行している他クラブで競うゲームに利用できます。
 
+## 🌶 Architecture 🌶
+
+<div align="center">
+  <img src="./asset/architecture3.png" alt="🌶ChilizProof🌶 Image" width="100%">
+</div>
+
 ## 🌶 Features 🌶
 
 ### QR Code scanning functionality
@@ -58,15 +64,36 @@ NftContractは、下記手順で実行できます。
 1. CreateMerkleTreeMethodで計算されたマークルルートをコントラクトに登録します。
 2. マークルプルーフを引数にしてNFT発行関数を呼び出し、適切なアドレスと分配枚数に応じてNFTを配布できます。
 
+### Features Component Relationships
+
+- 管理者はCreateFanTokenContract、SendFanTokenContract、NftContractをデプロイします。
+- ユーザーはアプリを使って座席のQRコードを読み取ります。
+- ユーザーがMOM投票を行うと、アドレス、座席ブロック、投票選手がシステムに登録されます。
+- 試合終了後、システムは以下の指標に基づいてアドレスに対する分配比率を計算します。
+    - 座席ブロックが応援リーダーに近いほど、ファントークンの分配比率を高くします。
+    - MOM投票が当選した場合、ファントークンの分配比率を2倍にします。
+- アドレスと分配比率で構成された配列に対して、マークルツリーを構築します。
+- アドレスと配布個数で構成された配列に対して、マークルツリーを構築します。
+- 求められたマークルツリーとマークルプルーフがシステムに登録されます。
+- 管理者は試合終了後、マークルルートをオンチェーンに登録します。
+- 管理者はファントークン発行コントラクトを実行し、トークンを配布します。
+- 管理者はNFT発行コントラクトを実行し、NFTを配布します。
+
+## 🌶 Architecture Developed During the Hackathon 🌶
+
+<div align="center">
+  <img src="./asset/architecture3.png" alt="🌶ChilizProof🌶 Image" width="100%">
+</div>
+
+
 ## 🌶 Features Developed During the Hackathon 🌶
 
 このハッカソンでは、Featuresのプロトタイプを開発し、CalculateContributionRateMethod、CreateMerkleTreeMethod、CreateFanTokenContract、SendFanTokenContract、そしてNftContractの相互作用を示すフローシナリオを作成しました。
 
-このシナリオでは、下記を実現しています。
-Admin
-UserがCalculateContributionRateMethodを呼び出し、サイト管理者がNftContract、SendFanTokenContractを実行します。
+UserがCalculateContributionRateMethod、CreateMerkleTreeMethodを実行し、
+AdminがCreateFanTokenContract、SendFanTokenContract、NftContractを実行します。
 
-UserはMetaMaskでサイトにログインし、その結果を確認できます。
+UserはMetaMaskでサイトにログインし、ファントークンおよびNFT配布結果を確認できます。
 
 ## 🌶 Usage 🌶
 
@@ -77,35 +104,7 @@ cd frontend && yarn && yarn dev
 
 ## 🌶 Demo 🌶
 
-## 🌶 Architecture 🌶
 
-### 
-<div align="center">
-  <img src="./asset/architecture3.png" alt="🌶ChilizProof🌶 Image" width="100%">
-</div>
-
-- 管理者はファントークン発行コントラクトをデプロイします。
-- 管理者はNFT発行コントラクトをデプロイします。
-- ユーザーはアプリを使って座席のQRコードを読み取ります。
-- ユーザーがMOM投票を行うと、アドレス、座席ブロック、投票選手がシステムに登録されます。
-- 試合終了後、システムは以下の指標に基づいてアドレスに対する分配比率を計算します。
-    - 座席ブロックが応援リーダーに近いほど、ファントークンの分配比率を高くします。
-    - MOM投票が当選した場合、ファントークンの分配比率を2倍にします。
-- アドレスと分配比率で構成された配列に対して、マークルツリー1を構築します。
-- アドレスと配布個数で構成された配列に対して、マークルツリー2を構築します。
-- 求められたマークルツリーとマークルプルーフがシステムに登録されます。
-- 管理者は試合終了後、マークルルートをオンチェーンに登録します。
-- 管理者はファントークン発行コントラクトを実行し、トークンを配布します。
-- 管理者はNFT発行コントラクトを実行し、NFTを配布します。
-
-### Component Relationships
-
-- 管理者は独自のファントークンをCreateFanTokenContractで作成
-- UserはCalculateContributionRateMethodに対してアドレスと座席コードとMOMプレイヤーを送信
-- CalculateContributionRateMethodは各アドレスに対する分配率を求め、Merkle RootとMerkle Proofを導出
-- 管理者はMerkle RootをChilizChainに設定
-- SendFanTokenContractはgetMerkleRootで検証を行い、問題なければFanTokenを指定アドレスに指定分配率だけ配布
-- NftContractはgetMerkleRootで検証を行い、問題なければNFTを指定アドレスに1枚だけ配布
 
 ## 🌶 License 🌶
 This project is licensed under the MIT License.
