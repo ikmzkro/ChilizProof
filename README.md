@@ -60,9 +60,11 @@ NftContractは、下記手順で実行できます。
 
 ## 🌶 Features Developed During the Hackathon 🌶
 
-このハッカソンでは、Featuresのプロトタイプを開発し、Fan、CalculateContributionRateMethod、NftContract、そしてSendFanTokenContractの相互作用を示すフローシナリオを作成しました。
+このハッカソンでは、Featuresのプロトタイプを開発し、CalculateContributionRateMethod、CreateMerkleTreeMethod、CreateFanTokenContract、SendFanTokenContract、そしてNftContractの相互作用を示すフローシナリオを作成しました。
 
-このシナリオでは、UserがCalculateContributionRateMethodを呼び出し、サイト管理者がNftContract、SendFanTokenContractをトリガーします。
+このシナリオでは、下記を実現しています。
+Admin
+UserがCalculateContributionRateMethodを呼び出し、サイト管理者がNftContract、SendFanTokenContractを実行します。
 
 UserはMetaMaskでサイトにログインし、その結果を確認できます。
 
@@ -95,8 +97,6 @@ cd frontend && yarn && yarn dev
 - 管理者は試合終了後、マークルルートをオンチェーンに登録します。
 - 管理者はファントークン発行コントラクトを実行し、トークンを配布します。
 - 管理者はNFT発行コントラクトを実行し、NFTを配布します。
-
-
 
 ### Component Relationships
 
