@@ -21,11 +21,7 @@ let moralisInitialized = false;
 
 export default function Home() {
   const [account, setAccount] = useState("");
-  const [chainId, setChainId] = useState(false);
-  const [chilizTokenBalance, setChilizTokenBalance] = useState("");
   const [tokenBalance, setTokenBalance] = useState("");
-  const [bankBalance, setBankBalance] = useState("");
-  const [bankTotalDeposit, setBankTotalDeposit] = useState("");
   const [nftOwner, setNftOwner] = useState(false);
   const [inputData, setInputData] = useState({
     selectedSeat: "",
@@ -34,8 +30,6 @@ export default function Home() {
   const [items, setItems] = useState<any[]>([]);
   const chilizSpicyTestnetChainId = "0x15b32"; // 88882 in hexadecimal
   const sepoliaChainId = "11155111"; // 88882 in hexadecimal
-  const chilizSpicyTestnetAddress =
-    "0xe81671f425fd1d84127255270642CCD36E86EE7C";
   const zeroAddress = "0x0000000000000000000000000000000000000000";
 
   players.sort((a, b) => a.number - b.number);
@@ -62,38 +56,38 @@ export default function Home() {
     }
   };
 
-  const checkChainId = async () => {
-    const { ethereum } = window;
-    if (ethereum) {
-      const chain = await ethereum.request({
-        method: "eth_chainId",
-      });
-      console.log(`chain: ${chain}`);
+  // const checkChainId = async () => {
+  //   const { ethereum } = window;
+  //   if (ethereum) {
+  //     const chain = await ethereum.request({
+  //       method: "eth_chainId",
+  //     });
+  //     console.log(`chain: ${chain}`);
 
-      if (chain != chilizSpicyTestnetChainId || chain != sepoliaChainId) {
-        alert("Please connect to the Chiliz Spicy Testnet!");
-        setChainId(false);
-        return;
-      } else {
-        setChainId(true);
-      }
-    }
-  };
+  //     if (chain != chilizSpicyTestnetChainId || chain != sepoliaChainId) {
+  //       alert("Please connect to the Chiliz Spicy Testnet!");
+  //       setChainId(false);
+  //       return;
+  //     } else {
+  //       setChainId(true);
+  //     }
+  //   }
+  // };
 
-  // TODO: https://github.com/ikmzkro/Chiliz-Sports-Hackathon/issues/27
-  const checkBalance = async () => {
-    try {
-      const response = await Moralis.EvmApi.balance.getNativeBalance({
-        address: "0x26fcbd3afebbe28d0a8684f790c48368d21665b5",
-        chain: "0x15b38",
-      });
+  // // TODO: https://github.com/ikmzkro/Chiliz-Sports-Hackathon/issues/27
+  // const checkBalance = async () => {
+  //   try {
+  //     const response = await Moralis.EvmApi.balance.getNativeBalance({
+  //       address: "0x26fcbd3afebbe28d0a8684f790c48368d21665b5",
+  //       chain: "0x15b38",
+  //     });
 
-      console.log("getBalance is done", response.toJSON());
-      setChilizTokenBalance(response.result.balance);
-    } catch (error) {
-      console.error("Failed to get balance:", error);
-    }
-  };
+  //     console.log("getBalance is done", response.toJSON());
+  //     setChilizTokenBalance(response.result.balance);
+  //   } catch (error) {
+  //     console.error("Failed to get balance:", error);
+  //   }
+  // };
 
   const connectWallet = async () => {
     try {
@@ -106,10 +100,6 @@ export default function Home() {
 
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
-
-      // CHZの残高取得
-      ethereum.on("accountsChanged", checkAccountChanged);
-      ethereum.on("chainChanged", checkChainId);
     } catch (err) {
       console.log(err);
     }
@@ -120,8 +110,6 @@ export default function Home() {
     setNftOwner(false);
     setItems([]);
     setTokenBalance("");
-    setBankBalance("");
-    setBankTotalDeposit("");
     setInputData({
       selectedSeat: "",
       selectedPlayer: "",
@@ -202,43 +190,43 @@ export default function Home() {
     }
   };
 
-  const tokenTransfer = async (event: any) => {
-    event.preventDefault();
-    if (
-      tokenBalance >= inputData.transferAmount &&
-      zeroAddress != inputData.transferAddress
-    ) {
-      try {
-        const { ethereum } = window;
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const erc20Contract = new ethers.Contract(
-          baseERC20ContractAddress,
-          BaseERC20.abi,
-          signer
-        );
-        const tx = await erc20Contract.transfer(
-          inputData.transferAddress,
-          inputData.transferAmount
-        );
-        await tx.wait();
+  // const tokenTransfer = async (event: any) => {
+  //   event.preventDefault();
+  //   if (
+  //     tokenBalance >= inputData.transferAmount &&
+  //     zeroAddress != inputData.transferAddress
+  //   ) {
+  //     try {
+  //       const { ethereum } = window;
+  //       const provider = new ethers.providers.Web3Provider(ethereum);
+  //       const signer = provider.getSigner();
+  //       const erc20Contract = new ethers.Contract(
+  //         baseERC20ContractAddress,
+  //         BaseERC20.abi,
+  //         signer
+  //       );
+  //       const tx = await erc20Contract.transfer(
+  //         inputData.transferAddress,
+  //         inputData.transferAmount
+  //       );
+  //       await tx.wait();
 
-        const tBalance = await erc20Contract.balanceOf(account);
-        setTokenBalance(tBalance.toNumber());
-        setInputData((prevData) => ({
-          ...prevData,
-          transferAddress: "",
-          transferAmount: "",
-        }));
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      alert(
-        "You cannot specify tokens exceeding the account balance or send them to the zero address."
-      );
-    }
-  };
+  //       const tBalance = await erc20Contract.balanceOf(account);
+  //       setTokenBalance(tBalance.toNumber());
+  //       setInputData((prevData) => ({
+  //         ...prevData,
+  //         transferAddress: "",
+  //         transferAmount: "",
+  //       }));
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   } else {
+  //     alert(
+  //       "You cannot specify tokens exceeding the account balance or send them to the zero address."
+  //     );
+  //   }
+  // };
 
   const handleSeatChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setInputData({ ...inputData, selectedSeat: e.target.value });
