@@ -57,3 +57,7 @@ for verification on the block explorer. Waiting for verification result...
 Successfully verified contract FanToken on the block explorer.
 https://testnet.chiliscan.com/address/0x5753951Ac1ea0CD2eda311386Cb8cceB1E7B3942#code
 ```
+
+
+721,SBT利用しないのでVerifyさえ解決すればOK
+後はマークルルート系のミント系やな
