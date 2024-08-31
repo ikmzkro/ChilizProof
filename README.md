@@ -169,3 +169,54 @@ For an introduction to our team, click [here](/docs/team.md).
 Email: ikmzkro@gmail.com
 
 Project Link: https://github.com/ikmzkro/ChilizProof
+
+# 振り返り
+
+- https://dorahacks.io/hackathon/chiliz/buidl
+- https://dorahacks.io/buidl/14210
+
+**結果**
+- Community Award ファイナリスト
+- 第4位
+- https://x.com/Chiliz/status/1818647987897168104
+
+**良かった点**
+- Chilizに詳しいお二方からフィードバックをいただき、全体の構成において視野が広がった。
+- サポーターに対する来場NFT配布と、貢献報酬計算ロジックの実装ができた。
+- Chilizの開発エンジニアに少し認知された。
+
+**改善が必要だった点**
+- 貢献報酬トークンの配布方法
+- マークルプルーフ認証を使用した来場NFTの配布方法
+- Chiliz Spicy Testnet上でのデプロイとヴェリファイ
+- Vercelでのデプロイ
+- フロントエンド開発に時間をかけすぎたこと
+- マークルプルーフ認証にもっと時間をかけるべきだった点
+- 全体像が広がりすぎて、伝えたいコアな内容が伝えきれなかった
+- 単純に技術不足
+
+
+# Reflection
+
+- [Hackathon Page](https://dorahacks.io/hackathon/chiliz/buidl)
+- [Project Page](https://dorahacks.io/buidl/14210)
+
+**Results**
+- Community Award Finalist
+- 4th Place
+- [Chiliz Announcement](https://x.com/Chiliz/status/1818647987897168104)
+
+**What Went Well**
+- Received valuable feedback from two experts in Chiliz, which broadened the perspective for the overall structure.
+- Successfully implemented the logic for distributing attendance NFTs to supporters and calculating contribution rewards.
+- Gained some recognition from the Chiliz development engineers.
+
+**Areas for Improvement**
+- Distribution method for contribution reward tokens.
+- Distribution of attendance NFTs using Merkle proof authentication.
+- Deployment and verification on the Chiliz Spicy Testnet.
+- Deployment on Vercel.
+- Spent too much time on frontend development.
+- Should have allocated more time to Merkle proof authentication.
+- The scope became too broad, diluting the core message.
+- Simply lacked technical expertise.
