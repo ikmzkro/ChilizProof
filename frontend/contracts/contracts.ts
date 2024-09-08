@@ -1,2 +1,0 @@
-export const MyNFTContractAddress = "0x0fd92fb94f827b0c7cdc4e673ecc1668457b447d"
-export const baseERC20ContractAddress = "0x93A6bE70077B840a2A56BcAc8A5fac6C15F38F25"

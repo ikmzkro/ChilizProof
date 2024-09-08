@@ -1,9 +1,7 @@
 {
-  "name": "Chiliz-Sports-Hackathon",
+  "name": "pf5",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:ikmzkro/chiliz-test.git",
-  "author": "ikmz <ikmz0104.official@gmail.com>",
   "license": "MIT",
   "scripts": {
     "test": "hardhat test",
@@ -11,7 +9,9 @@
     "build-abi": "yarn clean && yarn && hardhat build-abi"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.2"
+    "@openzeppelin/contracts": "^5.0.2",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "decimal.js": "^10.4.3"
   },
   "devDependencies": {
     "@ethersproject/providers": "^5.7.2",
@@ -21,7 +21,7 @@
     "@nomicfoundation/hardhat-ignition-ethers": "^0.15.0",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.5",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-etherscan": "^3.1.8",
     "@typechain/ethers-v5": "^10.2.1",
@@ -34,8 +34,6 @@
     "ethers": "^6.4.0",
     "hardhat": "^2.10.2",
     "hardhat-gas-reporter": "^1.0.8",
-    "keccak256": "^1.0.6",
-    "merkletreejs": "^0.2.32",
     "prettier": "^2.7.1",
     "prettier-plugin-solidity": "^1.0.0-beta.24",
     "solhint": "^3.3.7",
