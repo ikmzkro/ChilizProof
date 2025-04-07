@@ -1,18 +1,20 @@
 # FanToban
 
-## プロジェクトの説明
+## Project Description
 
-**FanToban** は、スタジアムに来場したサポーターの存在を「貢献」としてオンチェーンに記録し、役割・来場履歴・応援度に応じて報酬を設計する Web3 アプリケーションです。ただの観客ではなく、“応援そのもの”が「貢献」「証明」となり「報酬」に変わる、新しいスタジアム体験を提供します。
+**FanToban** is a Web3 application that recognizes stadium supporters as contributors,  
+recording their presence on-chain and designing token-based rewards based on their roles, attendance history, and level of support.  
 
-## 作り方
+More than just spectators, FanToban empowers fans to turn their **cheering itself** into  
+**proof of contribution** and **a source of reward**, redefining the stadium experience.
 
-このプロジェクトは、以下の要素を組み合わせて構築されています：
+## How It Works
 
-- 座席や応援スタイルに応じた「役割」の定義  
-- 試合ごとの役割・在席期間などをオンチェーンで記録  
-- Splits Protocol を用いた Pull 型の報酬分配設計  
+This project combines the following elements:
 
----
+- Role definitions based on seat type and style of support  
+- On-chain recording of attendance, roles, and presence per match  
+- Pull-based reward distribution using the Splits Protocol  
 
 ## Inspired by
 
