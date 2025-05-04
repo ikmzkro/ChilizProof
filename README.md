@@ -1,12 +1,12 @@
 # The problem it solves
 
-## Explain how your project addresses a need or improves existing solutions
+Explain how your project addresses a need or improves existing solutions
 
 
 
 # Challenges I ran into
 
-## Share notable obstacles encountered during development and how you overcame them
+Share notable obstacles encountered during development and how you overcame them
 
 # Tracks Applied
 
