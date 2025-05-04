@@ -15,3 +15,7 @@
 ## Inspired by
 
 [Toban](https://github.com/hackdays-io/toban)
+
+## メモ
+
+Tobanの2次創作用に準備したものの上手く開発のモチベが保てなかった、本当に難しい。。。
